@@ -38,7 +38,6 @@ async function syncDb() {
       .concat(created)
       .concat(deleted)
       .concat(renamed)
-    console.log('fileChanged >>> ', fileChanged)
     if (fileChanged.length) {
       // 到此，说明 git status 有改动
       // 是否 改动了 db 相关的文件
@@ -54,7 +53,6 @@ async function syncDb() {
     }
     // 如果 git status 没改动。则照常同步数 据库，重要！！！
   }
-  console.log('needToSyncDb >>> ', needToSyncDb)
   if (needToSyncDb) {
     await seq.sync({ alter: true })
   }
